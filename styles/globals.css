@@ -1,16 +1,31 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 * {
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
+}
+
+nav {
+  z-index: 10
+}
+
+nav.scrolled {
+  @apply shadow-xl bg-white;
+  border-bottom: 0px;
+}
+
+.hero-section {
+  @apply bg-[url('/assets/home-shape.png')] bg-cover bg-center self-center relative;
+  height: 980px;
+}
+
+.typed-cursor{
+  font-size: 35px;
+  opacity: 1;
+  -webkit-animation: blink 0.7s infinite;
+  -moz-animation: blink 0.7s infinite;
+  animation: blink 0.7s infinite;
 }
