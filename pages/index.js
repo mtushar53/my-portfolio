@@ -30,7 +30,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="hero-section">
+      <div className="hero-section" id="home">
         <div className="container flex pt-40">
           <div className="w-3/5 mt-4 py-16">
             <div className="p-3 bg-white w-1/3 border border-gray-200 rounded-3xl text-sm text-center">
@@ -58,11 +58,11 @@ export default function Home() {
           </div>
           <div className="w-2/5 -z-10">
             <Image
-              src="/assets/home.png"
+              src="/assets/tushar.png"
               alt="home"
               layout="responsive"
-              width={526}
-              height={809}
+              width={1512}
+              height={2255}
             />
           </div>
         </div>
@@ -76,13 +76,15 @@ export default function Home() {
               </h2>
               <div className="mt-3 text-sm">
                 <p className="mb-2">
-                  Email: <span className="text-gray-500">mtushar53@gmail.com</span>
+                  Email:{" "}
+                  <span className="text-gray-500">mtushar53@gmail.com</span>
                 </p>
                 <p className="mb-2">
                   Language: <span className="text-gray-500">English</span>
                 </p>
                 <p className="mb-2">
-                  Email: <span className="text-gray-500">mtushar53@gmail.com</span>
+                  Email:{" "}
+                  <span className="text-gray-500">mtushar53@gmail.com</span>
                 </p>
               </div>
             </div>
@@ -104,57 +106,134 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="bg-[#f8f9fa] pt-40 pb-20">
+      <div className="bg-[#f8f9fa] pt-40 pb-20" id="services">
         <div className="container">
           <div className="text-center pb-12">
             <h2 className="text-3xl mb-5">Awesome Service</h2>
-            <p className="max-w-xl mx-auto text-sm text-gray-500">Obviously I am a Web Designer. Experienced with all stages of the development cycle for dynamic web projects.</p>
+            <p className="max-w-xl mx-auto text-sm text-gray-500">
+              Obviously I am a Web Designer. Experienced with all stages of the
+              development cycle for dynamic web projects.
+            </p>
           </div>
 
           <div className="grid grid-cols-3 gap-5">
             <div className="p-10 bg-white rounded-xl">
               <h2 className="text-xl mb-4">Web Development</h2>
-              <p className="text-sm text-gray-500">With lots of unique blocks, you can easily build a page without coding.</p>
+              <p className="text-sm text-gray-500">
+                With lots of unique blocks, you can easily build a page without
+                coding.
+              </p>
             </div>
             <div className="p-10 bg-white rounded-xl">
               <h2 className="text-xl mb-4">Web Development</h2>
-              <p className="text-sm text-gray-500">With lots of unique blocks, you can easily build a page without coding.</p>
+              <p className="text-sm text-gray-500">
+                With lots of unique blocks, you can easily build a page without
+                coding.
+              </p>
             </div>
             <div className="p-10 bg-white rounded-xl">
               <h2 className="text-xl mb-4">Web Development</h2>
-              <p className="text-sm text-gray-500">With lots of unique blocks, you can easily build a page without coding.</p>
+              <p className="text-sm text-gray-500">
+                With lots of unique blocks, you can easily build a page without
+                coding.
+              </p>
             </div>
             <div className="p-10 bg-white rounded-xl">
               <h2 className="text-xl mb-4">Web Development</h2>
-              <p className="text-sm text-gray-500">With lots of unique blocks, you can easily build a page without coding.</p>
+              <p className="text-sm text-gray-500">
+                With lots of unique blocks, you can easily build a page without
+                coding.
+              </p>
             </div>
             <div className="p-10 bg-white rounded-xl">
               <h2 className="text-xl mb-4">Web Development</h2>
-              <p className="text-sm text-gray-500">With lots of unique blocks, you can easily build a page without coding.</p>
+              <p className="text-sm text-gray-500">
+                With lots of unique blocks, you can easily build a page without
+                coding.
+              </p>
             </div>
             <div className="p-10 bg-white rounded-xl">
               <h2 className="text-xl mb-4">Web Development</h2>
-              <p className="text-sm text-gray-500">With lots of unique blocks, you can easily build a page without coding.</p>
+              <p className="text-sm text-gray-500">
+                With lots of unique blocks, you can easily build a page without
+                coding.
+              </p>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="container pt-32">
+      <div className="container pt-32" id="resume">
         <div className="flex justify-center items-center">
           <div className="w-1/3 p-3">
             <h1 className="text-3xl mb-5">Work Participation</h1>
-            <p className="text-gray-500 text-sm pr-4">Obviously I am a Web Designer. Experienced with all stages of the development cycle for dynamic web projects.</p>
+            <p className="text-gray-500 text-sm pr-4">
+              Obviously I am a Web Designer. Experienced with all stages of the
+              development cycle for dynamic web projects.
+            </p>
           </div>
           <div className="w-2/3">
-            <div className="flex justify-between w-4/5 mr-auto border border-dashed p-5 pl-32 mb-5 rounded-tl-full">
-              <div>
+            <div className="flex w-4/5 mr-auto border border-dashed p-5 pl-32 mb-16 rounded-tl-full">
+              <div className="w-[75%]">
                 <h2 className="mb-2">Software Engineer</h2>
                 <p className="mb-2">Shajgoj Limited</p>
-                <p className="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer males uada tellus lorem, et condimentum</p>
+                <p className="text-sm">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Integer males uada tellus lorem, et condimentum
+                </p>
+              </div>
+              <p>2022 - Present</p>
+            </div>
+            <div className="flex w-4/5 ml-auto border border-dashed p-5 mb-16 rounded-br-full">
+              <div className="w-[75%]">
+                <h2 className="mb-2">Software Engineer</h2>
+                <p className="mb-2">Augnitive</p>
+                <p className="text-sm">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Integer males uada tellus lorem, et condimentum
+                </p>
               </div>
               <p>2020 - 2022</p>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-gray-100">
+        <div className="container grid grid-cols-4 gap-8 text-center">
+          <div className="p-20 bg-white my-24 rounded-xl shadow-md">
+            <h2 className="text-3xl font-semibold">90%</h2>
+            <p className="text-xl mt-2">Happy Client</p>
+          </div>
+          <div className="p-20 bg-white my-24 rounded-xl shadow-md">
+            <h2 className="text-3xl font-semibold">90%</h2>
+            <p className="text-xl mt-2">Happy Client</p>
+          </div>
+          <div className="p-20 bg-white my-24 rounded-xl shadow-md">
+            <h2 className="text-3xl font-semibold">90%</h2>
+            <p className="text-xl mt-2">Happy Client</p>
+          </div>
+          <div className="p-20 bg-white my-24 rounded-xl shadow-md">
+            <h2 className="text-3xl font-semibold">90%</h2>
+            <p className="text-xl mt-2">Happy Client</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="container">
+        <div className="flex justify-center">
+          <div className="w-1/3 p-3">
+            <Image
+              src="/assets/tushar.png"
+              alt="home"
+              layout="responsive"
+              width={1512}
+              height={2255}
+            />
+          </div>
+          <div className="w-2/3 pt-28 text-center">
+            <h2 className="text-2xl font-medium">Work Expertise</h2>
+            <p className="w-2/3 mx-auto mt-5 text-gray-500">Obviously I am a Web Designer. Experienced with all stages of the development cycle for dynamic web projects.</p>
           </div>
         </div>
       </div>

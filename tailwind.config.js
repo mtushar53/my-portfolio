@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        Montserrat: ["Montserrat", "sans-serif"],
+      },
       backgroundImage: {
         "hero-pattern": "url('/assets/home-shape.png')",
       },
