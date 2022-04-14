@@ -1,13 +1,21 @@
 import Image from "next/image";
 import Typed from "typed.js";
-import { useRef, useEffect } from "react";
-import { FiDownload } from "react-icons/fi";
+import { useRef, useEffect, useState } from "react";
+import { FiDownload, FiMail } from "react-icons/fi";
+import { BsTelephone } from "react-icons/bs";
+import { GrLocation } from "react-icons/gr";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import validate from "../services/validation";
 
 export default function Home() {
   // Create reference to store the DOM element containing the animation
   const el = useRef(null);
   // Create reference to store the Typed instance itself
   const typed = useRef(null);
+
+  const [contactData, setContactData] = useState({});
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     const options = {
@@ -27,6 +35,57 @@ export default function Home() {
       typed.current.destroy();
     };
   }, []);
+
+  function handleChange(event) {
+    const name = event.target.name;
+    const value = event.target.value;
+    setContactData({ ...contactData, [name]: value });
+    const errorList = validate(name, value, errors);
+    console.log(errorList, 'rrr')
+    setErrors(errorList);
+  }
+
+  function handleSubmit() {
+    let errors = {};
+    errors = validate("name", contactData.name, errors);
+    errors = validate("email", contactData.email, errors);
+    errors = validate("subject", contactData.subject, errors);
+    errors = validate("message", contactData.message, errors);
+    console.log(errors, 'err')
+    setErrors({ ...errors });
+    if (Object.keys(errors).length) return;
+
+    let data = {
+      name: contactData.name,
+      email: contactData.email,
+      subject: contactData.subject,
+      message: contactData.message,
+    };
+    console.log(data, "data");
+
+    fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }).then((res) => {
+      console.log(res, "Response received");
+      if (res.status === 200) {
+        console.log("Response succeeded!");
+        toast.success("Message send successful!", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
+    });
+  }
 
   return (
     <>
@@ -51,9 +110,13 @@ export default function Home() {
               >
                 Hire Me
               </button>
-              <button className="flex items-center space-x-2 border border-blue-500 px-7 rounded-xl text-blue-500">
+              <a
+                href="/assets/Ahata Sham Ul Haque Tushar.pdf"
+                download
+                className="flex items-center space-x-2 border border-blue-500 px-7 rounded-xl text-blue-500"
+              >
                 Download CV <FiDownload />
-              </button>
+              </a>
             </div>
           </div>
           <div className="w-2/5 -z-10">
@@ -233,7 +296,274 @@ export default function Home() {
           </div>
           <div className="w-2/3 pt-28 text-center">
             <h2 className="text-2xl font-medium">Work Expertise</h2>
-            <p className="w-2/3 mx-auto mt-5 text-gray-500">Obviously I am a Web Designer. Experienced with all stages of the development cycle for dynamic web projects.</p>
+            <p className="w-2/3 mx-auto mt-5 text-gray-500">
+              Obviously I am a Web Designer. Experienced with all stages of the
+              development cycle for dynamic web projects.
+            </p>
+            <div className="w-[80%] mx-auto grid grid-cols-4 gap-x-5 gap-y-16 mt-20">
+              <div className="w-[80px] h-[80px] mx-auto rounded-full flex justify-center items-center full-shadow relative">
+                <Image
+                  src="/assets/bootstrap.svg"
+                  width={35}
+                  height={35}
+                  alt="bootstrap"
+                />
+                <span className="absolute bg-blue-100 text-blue-500 font-bold rounded-sm text-xs -top-1 -right-1 px-1">
+                  70%
+                </span>
+              </div>
+              <div className="w-[80px] h-[80px] mx-auto rounded-full flex justify-center items-center full-shadow relative">
+                <Image
+                  src="/assets/nodejs-icon.svg"
+                  width={35}
+                  height={35}
+                  alt="bootstrap"
+                />
+                <span className="absolute bg-blue-100 text-blue-500 font-bold rounded-sm text-xs -top-1 -right-1 px-1">
+                  70%
+                </span>
+              </div>
+              <div className="w-[80px] h-[80px] mx-auto rounded-full flex justify-center items-center full-shadow relative">
+                <Image
+                  src="/assets/react.svg"
+                  width={35}
+                  height={35}
+                  alt="bootstrap"
+                />
+                <span className="absolute bg-blue-100 text-blue-500 font-bold rounded-sm text-xs -top-1 -right-1 px-1">
+                  70%
+                </span>
+              </div>
+              <div className="w-[80px] h-[80px] mx-auto rounded-full flex justify-center items-center full-shadow relative">
+                <Image
+                  src="/assets/post_gray_sql.svg"
+                  width={35}
+                  height={35}
+                  alt="bootstrap"
+                />
+                <span className="absolute bg-blue-100 text-blue-500 font-bold rounded-sm text-xs -top-1 -right-1 px-1">
+                  70%
+                </span>
+              </div>
+              <div className="w-[80px] h-[80px] mx-auto rounded-full flex justify-center items-center full-shadow relative">
+                <Image
+                  src="/assets/amazons3.svg"
+                  width={35}
+                  height={35}
+                  alt="bootstrap"
+                />
+                <span className="absolute bg-blue-100 text-blue-500 font-bold rounded-sm text-xs -top-1 -right-1 px-1">
+                  70%
+                </span>
+              </div>
+              <div className="w-[80px] h-[80px] mx-auto rounded-full flex justify-center items-center full-shadow relative">
+                <Image
+                  src="/assets/android.svg"
+                  width={35}
+                  height={35}
+                  alt="bootstrap"
+                />
+                <span className="absolute bg-blue-100 text-blue-500 font-bold rounded-sm text-xs -top-1 -right-1 px-1">
+                  70%
+                </span>
+              </div>
+              <div className="w-[80px] h-[80px] mx-auto rounded-full flex justify-center items-center full-shadow relative">
+                <Image
+                  src="/assets/Angular.svg"
+                  width={35}
+                  height={35}
+                  alt="bootstrap"
+                />
+                <span className="absolute bg-blue-100 text-blue-500 font-bold rounded-sm text-xs -top-1 -right-1 px-1">
+                  70%
+                </span>
+              </div>
+              <div className="w-[80px] h-[80px] mx-auto rounded-full flex justify-center items-center full-shadow relative">
+                <Image
+                  src="/assets/mongodb.svg"
+                  width={35}
+                  height={35}
+                  alt="bootstrap"
+                />
+                <span className="absolute bg-blue-100 text-blue-500 font-bold rounded-sm text-xs -top-1 -right-1 px-1">
+                  70%
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-[#f8f9fa] pb-20" id="projects">
+        <div className="container">
+          <h2 className="text-3xl text-center pt-24 font-medium">
+            My Work & Portfolio
+          </h2>
+          <p className="text-center w-1/2 mx-auto mt-6 text-gray-500">
+            Obviously I am a Web Designer. Experienced with all stages of the
+            development cycle for dynamic web projects.
+          </p>
+          <div className="grid grid-cols-3 gap-5 mt-20">
+            <div className=" ">
+              <Image
+                className="rounded-xl full-shadow"
+                src="/assets/1.jpg"
+                alt="portfolio"
+                width={416}
+                height={312}
+              />
+            </div>
+            <div className=" ">
+              <Image
+                className="rounded-xl full-shadow"
+                src="/assets/2.jpg"
+                alt="portfolio"
+                width={416}
+                height={312}
+              />
+            </div>
+            <div className=" ">
+              <Image
+                className="rounded-xl full-shadow"
+                src="/assets/3.jpg"
+                alt="portfolio"
+                width={416}
+                height={312}
+              />
+            </div>
+            <div className=" ">
+              <Image
+                className="rounded-xl full-shadow"
+                src="/assets/1.jpg"
+                alt="portfolio"
+                width={416}
+                height={312}
+              />
+            </div>
+            <div className=" ">
+              <Image
+                className="rounded-xl full-shadow"
+                src="/assets/2.jpg"
+                alt="portfolio"
+                width={416}
+                height={312}
+              />
+            </div>
+            <div className=" ">
+              <Image
+                className="rounded-xl full-shadow"
+                src="/assets/3.jpg"
+                alt="portfolio"
+                width={416}
+                height={312}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="pb-20" id="contact">
+        <div className="container">
+          <h2 className="text-3xl text-center pt-24 font-medium">Contact Me</h2>
+          <p className="text-center w-1/2 mx-auto mt-6 text-gray-500">
+            Obviously I am a Web Designer. Experienced with all stages of the
+            development cycle for dynamic web projects.
+          </p>
+          <div className="grid grid-cols-3 gap-5 mt-20">
+            <div className="flex flex-col items-center text-center">
+              <BsTelephone size={30} />
+              <h4 className="text-xl font-medium my-5">Phone</h4>
+              <p className="text-sm text-gray-500 mb-5">
+                Promising development turmoil inclusive education transformative
+                community
+              </p>
+              <a
+                href="tel:+8801521324263"
+                className="text-blue-500 font-medium tracking-wide"
+              >
+                +8801521324263
+              </a>
+            </div>
+            <div className="flex flex-col items-center text-center">
+              <FiMail size={30} />
+              <h4 className="text-xl font-medium my-5">Email</h4>
+              <p className="text-sm text-gray-500 mb-5">
+                Promising development turmoil inclusive education transformative
+                community
+              </p>
+              <a
+                href="mail:mtushar53@gmail.com"
+                className="text-blue-500 font-medium tracking-wide"
+              >
+                mtushar53@gmail.com
+              </a>
+            </div>
+            <div className="flex flex-col items-center text-center">
+              <GrLocation size={30} />
+              <h4 className="text-xl font-medium my-5">Location</h4>
+              <p className="text-sm text-gray-500 mb-5">
+                Promising development turmoil inclusive education transformative
+                community
+              </p>
+              <a href="#" className="text-blue-500 font-medium tracking-wide">
+                View on Google map
+              </a>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-5 mt-14">
+            <div className="">
+              <input
+                type="text"
+                className="w-full outline-0 border border-gray-300 px-3 py-2 rounded-lg mb-[1.9rem]"
+                placeholder="First Name"
+                name="name"
+                value={contactData.name}
+                onChange={(event) => handleChange(event)}
+              />
+              {errors.name && (
+                <span className="text-sm ml-2 text-sg-pink">{errors.name}</span>
+              )}
+              <input
+                type="email"
+                className="w-full outline-0 border border-gray-300 px-3 py-2 rounded-lg mb-[1.9rem]"
+                placeholder="Your Email"
+                name="email"
+                value={contactData.email}
+                onChange={(event) => handleChange(event)}
+              />
+              {errors.email && (
+                <span className="text-sm ml-2 text-sg-pink">
+                  {errors.email}
+                </span>
+              )}
+              <input
+                type="text"
+                className="w-full outline-0 border border-gray-300 px-3 py-2 rounded-lg mb-[1.9rem]"
+                placeholder="Your Subject"
+                name="subject"
+                value={contactData.subject}
+                onChange={(event) => handleChange(event)}
+              />
+            </div>
+            <div className="text-right">
+              <textarea
+                placeholder="Your Message"
+                rows={7}
+                className="w-full outline-0 border border-gray-300 px-3 py-2 rounded-lg mb-6"
+                name="message"
+                value={contactData.message}
+                onChange={(event) => handleChange(event)}
+              />
+              <button
+                type="button"
+                className="px-8 py-2 bg-blue-500 rounded-xl text-white"
+                onClick={() => handleSubmit()}
+              >
+                Send Message
+              </button>
+              <ToastContainer />
+            </div>
           </div>
         </div>
       </div>
