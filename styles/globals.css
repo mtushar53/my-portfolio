@@ -12,7 +12,7 @@
 }
 
 nav {
-  z-index: 10
+  z-index: 10;
 }
 
 nav.scrolled {
@@ -25,7 +25,7 @@ nav.scrolled {
   height: 980px;
 }
 
-.typed-cursor{
+.typed-cursor {
   font-size: 35px;
   opacity: 1;
   -webkit-animation: blink 0.7s infinite;
@@ -36,4 +36,102 @@ nav.scrolled {
 .full-shadow {
   box-shadow: -0.0625rem 0 0.625rem 0 rgb(0 0 0 / 7%),
     0.3125rem 1.25rem 2.5rem 0 rgb(0 0 0 / 4%) !important;
+}
+
+.mobileMenu {
+  display: flex;
+  justify-content: space-between;
+  height: 48px;
+  text-align: right;
+  padding-right: 25px;
+  margin-top: 12px;
+}
+
+.mobileMenuList {
+  position: fixed;
+  top: -120vh;
+  height: 120vh;
+  width: 100%;
+  background: #4680fe;
+  transition: all 500ms ease-in-out;
+  display: flex;
+  flex-direction: column;
+}
+
+.mobileMenuClose {
+  margin: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 67px;
+  margin-left: auto;
+}
+
+.mobileMenuClose span {
+  margin-right: 10px;
+  color: white;
+}
+
+.mobileMenu a {
+  padding-left: 20px;
+  font-size: 16px;
+  text-decoration: none;
+  color: black;
+}
+
+.mobileMenu a span {
+  color: #4680fe;
+}
+
+.mobileMenu .mobileMenuText {
+  margin-right: 10px;
+  color: #4680fe;
+}
+
+.mobileMenu .active {
+  top: 0;
+  z-index: 10;
+}
+
+.mobileMenuList .contactSection {
+  text-align: left;
+  background: #101c3d;
+  color: white;
+  flex-grow: 1;
+  padding: 30px;
+}
+
+.contactBtn {
+  border: 1px solid #4680fe80;
+  padding: 10px 26px;
+  border-radius: 20px;
+  cursor: pointer;
+  color: #4680fe;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  text-decoration: none;
+}
+
+.mobileMenuItems {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  padding: 0 2rem;
+}
+
+.mobileMenuItems li {
+  padding: 20px 40px;
+  border-bottom: 1px solid white;
+}
+.mobileMenuItems li:last-child {
+  border-bottom: none;
+}
+
+.mobileMenuItems li a {
+  font-size: 28px;
+  color: white;
+  text-decoration: none;
 }

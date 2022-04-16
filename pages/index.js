@@ -9,9 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import validate from "../services/validation";
 
 export default function Home() {
-  // Create reference to store the DOM element containing the animation
   const el = useRef(null);
-  // Create reference to store the Typed instance itself
   const typed = useRef(null);
 
   const [contactData, setContactData] = useState({});
@@ -26,12 +24,9 @@ export default function Home() {
       autoInsertCss: true,
     };
 
-    // elRef refers to the <span> rendered below
     typed.current = new Typed(el.current, options);
 
     return () => {
-      // Make sure to destroy Typed instance during cleanup
-      // to prevent memory leaks
       typed.current.destroy();
     };
   }, []);
@@ -41,7 +36,7 @@ export default function Home() {
     const value = event.target.value;
     setContactData({ ...contactData, [name]: value });
     const errorList = validate(name, value, errors);
-    console.log(errorList, 'rrr')
+    console.log(errorList, "rrr");
     setErrors(errorList);
   }
 
@@ -51,7 +46,7 @@ export default function Home() {
     errors = validate("email", contactData.email, errors);
     errors = validate("subject", contactData.subject, errors);
     errors = validate("message", contactData.message, errors);
-    console.log(errors, 'err')
+    console.log(errors, "err");
     setErrors({ ...errors });
     if (Object.keys(errors).length) return;
 
@@ -90,14 +85,14 @@ export default function Home() {
   return (
     <>
       <div className="hero-section" id="home">
-        <div className="container flex pt-40">
-          <div className="w-3/5 mt-4 py-16">
+        <div className="container flex flex-wrap pt-40">
+          <div className="w-full md:w-3/5 mt-4 py-16">
             <div className="p-3 bg-white w-1/3 border border-gray-200 rounded-3xl text-sm text-center">
               Looking for a Developer !
             </div>
             <div className="flex mt-5">
-              <h2 className="text-5xl pr-4 font-bold">I Am</h2>
-              <h2 className="text-5xl text-blue-500 font-bold" ref={el} />
+              <h2 className="text-3xl md:text-5xl pr-4 font-bold">I Am</h2>
+              <h2 className="text-3xl md:text-5xl text-blue-500 font-bold" ref={el} />
             </div>
             <p className="mt-4 text-gray-400">
               Obviously I am a Web Designer. Web Developer with over 3 years of
@@ -119,7 +114,7 @@ export default function Home() {
               </a>
             </div>
           </div>
-          <div className="w-2/5 -z-10">
+          <div className="w-full md:w-2/5 -z-10">
             <Image
               src="/assets/tushar.png"
               alt="home"
@@ -130,10 +125,10 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="bg-[#f8f9fa] h-34 block absolute w-full">
+      <div className="bg-[#f8f9fa] h-34 block mt-[280px] md:t-0 md:absolute w-full">
         <div className="container block -mt-32">
-          <div className="bg-white border flex p-5 rounded-xl">
-            <div className="p-5 bg-[#f8f9fa] rounded-xl w-1/4">
+          <div className="bg-white border flex flex-wrap p-5 rounded-xl">
+            <div className="p-5 bg-[#f8f9fa] rounded-xl w-full md:w-1/4">
               <h2 className="border-b-2 border-dashed border-gray-300 pb-3">
                 Personal Details
               </h2>
@@ -151,7 +146,7 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="px-5 w-3/4">
+            <div className="px-5 w-full md:w-3/4">
               <h4 className="text-2xl leading-normal mb-2 pt-3">I Am</h4>
               <p className="text-sm text-gray-500 mb-3">
                 Obviously I am a Web Designer. Web Developer with over 3 years
@@ -179,7 +174,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             <div className="p-10 bg-white rounded-xl">
               <h2 className="text-xl mb-4">Web Development</h2>
               <p className="text-sm text-gray-500">
@@ -227,15 +222,15 @@ export default function Home() {
       </div>
 
       <div className="container pt-32" id="resume">
-        <div className="flex justify-center items-center">
-          <div className="w-1/3 p-3">
+        <div className="flex flex-wrap justify-center items-center">
+          <div className="w-full md:w-1/3 p-3">
             <h1 className="text-3xl mb-5">Work Participation</h1>
             <p className="text-gray-500 text-sm pr-4">
               Obviously I am a Web Designer. Experienced with all stages of the
               development cycle for dynamic web projects.
             </p>
           </div>
-          <div className="w-2/3">
+          <div className="w-full md:w-2/3">
             <div className="flex w-4/5 mr-auto border border-dashed p-5 pl-32 mb-16 rounded-tl-full">
               <div className="w-[75%]">
                 <h2 className="mb-2">Software Engineer</h2>
@@ -263,20 +258,20 @@ export default function Home() {
       </div>
 
       <div className="bg-gray-100">
-        <div className="container grid grid-cols-4 gap-8 text-center">
-          <div className="p-20 bg-white my-24 rounded-xl shadow-md">
+        <div className="container grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-8 text-center">
+          <div className="p-20 bg-white my-5 md:my-24 rounded-xl shadow-md">
             <h2 className="text-3xl font-semibold">90%</h2>
             <p className="text-xl mt-2">Happy Client</p>
           </div>
-          <div className="p-20 bg-white my-24 rounded-xl shadow-md">
+          <div className="p-20 bg-white my-5 md:my-24 rounded-xl shadow-md">
             <h2 className="text-3xl font-semibold">90%</h2>
             <p className="text-xl mt-2">Happy Client</p>
           </div>
-          <div className="p-20 bg-white my-24 rounded-xl shadow-md">
+          <div className="p-20 bg-white mb-5 md:mb-0 md:my-24 rounded-xl shadow-md">
             <h2 className="text-3xl font-semibold">90%</h2>
             <p className="text-xl mt-2">Happy Client</p>
           </div>
-          <div className="p-20 bg-white my-24 rounded-xl shadow-md">
+          <div className="p-20 bg-white mb-5 md:mb-0 md:my-24 rounded-xl shadow-md">
             <h2 className="text-3xl font-semibold">90%</h2>
             <p className="text-xl mt-2">Happy Client</p>
           </div>
@@ -284,8 +279,8 @@ export default function Home() {
       </div>
 
       <div className="container">
-        <div className="flex justify-center">
-          <div className="w-1/3 p-3">
+        <div className="flex flex-wrap justify-center">
+          <div className="w-full md:w-1/3 p-3">
             <Image
               src="/assets/tushar.png"
               alt="home"
@@ -294,13 +289,13 @@ export default function Home() {
               height={2255}
             />
           </div>
-          <div className="w-2/3 pt-28 text-center">
+          <div className="w-full md:w-2/3 pt-28 mb-10 text-center">
             <h2 className="text-2xl font-medium">Work Expertise</h2>
             <p className="w-2/3 mx-auto mt-5 text-gray-500">
               Obviously I am a Web Designer. Experienced with all stages of the
               development cycle for dynamic web projects.
             </p>
-            <div className="w-[80%] mx-auto grid grid-cols-4 gap-x-5 gap-y-16 mt-20">
+            <div className="w-[80%] mx-auto grid grid-cols-2 md:grid-cols-4 gap-x-5 gap-y-16 mt-20">
               <div className="w-[80px] h-[80px] mx-auto rounded-full flex justify-center items-center full-shadow relative">
                 <Image
                   src="/assets/bootstrap.svg"
@@ -403,7 +398,7 @@ export default function Home() {
             Obviously I am a Web Designer. Experienced with all stages of the
             development cycle for dynamic web projects.
           </p>
-          <div className="grid grid-cols-3 gap-5 mt-20">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-20">
             <div className=" ">
               <Image
                 className="rounded-xl full-shadow"
@@ -469,7 +464,7 @@ export default function Home() {
             Obviously I am a Web Designer. Experienced with all stages of the
             development cycle for dynamic web projects.
           </p>
-          <div className="grid grid-cols-3 gap-5 mt-20">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-20">
             <div className="flex flex-col items-center text-center">
               <BsTelephone size={30} />
               <h4 className="text-xl font-medium my-5">Phone</h4>
@@ -511,7 +506,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-5 mt-14">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-14">
             <div className="">
               <input
                 type="text"
