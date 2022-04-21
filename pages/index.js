@@ -4,9 +4,11 @@ import { useRef, useEffect, useState } from "react";
 import { FiDownload, FiMail } from "react-icons/fi";
 import { BsTelephone } from "react-icons/bs";
 import { GrLocation } from "react-icons/gr";
+import { MdPersonSearch } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import validate from "../services/validation";
+import { Link } from "react-scroll";
 
 export default function Home() {
   const el = useRef(null);
@@ -36,7 +38,6 @@ export default function Home() {
     const value = event.target.value;
     setContactData({ ...contactData, [name]: value });
     const errorList = validate(name, value, errors);
-    console.log(errorList, "rrr");
     setErrors(errorList);
   }
 
@@ -56,7 +57,6 @@ export default function Home() {
       subject: contactData.subject,
       message: contactData.message,
     };
-    console.log(data, "data");
 
     fetch("/api/contact", {
       method: "POST",
@@ -87,24 +87,33 @@ export default function Home() {
       <div className="hero-section" id="home">
         <div className="container flex flex-wrap pt-40">
           <div className="w-full md:w-3/5 mt-4 py-16">
-            <div className="p-3 bg-white w-1/3 border border-gray-200 rounded-3xl text-sm text-center">
+            <div className="p-3 bg-white w-1/3 border border-gray-200 rounded-3xl text-sm text-center flex justify-center items-center">
+              <MdPersonSearch className="mr-2 text-blue-500" size={25} />
               Looking for a Developer !
             </div>
             <div className="flex mt-5">
               <h2 className="text-3xl md:text-5xl pr-4 font-bold">I Am</h2>
-              <h2 className="text-3xl md:text-5xl text-blue-500 font-bold" ref={el} />
+              <h2
+                className="text-3xl md:text-5xl text-blue-500 font-bold"
+                ref={el}
+              />
             </div>
             <p className="mt-4 text-gray-400">
               Obviously I am a Web Designer. Web Developer with over 3 years of
               experience. Experienced with all stages of the development
             </p>
             <div className="mt-7 flex space-x-6">
-              <button
-                type="button"
-                className="px-8 py-2 bg-blue-500 rounded-xl text-white"
+              <Link
+                className="px-8 py-2 bg-blue-500 rounded-xl text-white cursor-pointer"
+                activeClass="active"
+                to="contact"
+                spy={true}
+                smooth={true}
+                offset={-100}
+                duration={500}
               >
                 Hire Me
-              </button>
+              </Link>
               <a
                 href="/assets/Ahata Sham Ul Haque Tushar.pdf"
                 download
@@ -125,7 +134,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="bg-[#f8f9fa] h-34 block mt-[280px] md:t-0 md:absolute w-full">
+      <div className="bg-[#f8f9fa] h-34 block mt-[280px] md:mt-0 md:t-0 md:absolute w-full">
         <div className="container block -mt-32">
           <div className="bg-white border flex flex-wrap p-5 rounded-xl">
             <div className="p-5 bg-[#f8f9fa] rounded-xl w-full md:w-1/4">
@@ -267,11 +276,11 @@ export default function Home() {
             <h2 className="text-3xl font-semibold">90%</h2>
             <p className="text-xl mt-2">Happy Client</p>
           </div>
-          <div className="p-20 bg-white mb-5 md:mb-0 md:my-24 rounded-xl shadow-md">
+          <div className="p-20 bg-white my-5 md:my-24 rounded-xl shadow-md">
             <h2 className="text-3xl font-semibold">90%</h2>
             <p className="text-xl mt-2">Happy Client</p>
           </div>
-          <div className="p-20 bg-white mb-5 md:mb-0 md:my-24 rounded-xl shadow-md">
+          <div className="p-20 bg-white my-5 md:my-24 rounded-xl shadow-md">
             <h2 className="text-3xl font-semibold">90%</h2>
             <p className="text-xl mt-2">Happy Client</p>
           </div>
@@ -399,59 +408,257 @@ export default function Home() {
             development cycle for dynamic web projects.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-20">
-            <div className=" ">
+            <div className="relative portfolio-work overflow-hidden rounded-xl">
               <Image
-                className="rounded-xl full-shadow"
+                className="rounded-xl full-shadow portfolio-image"
                 src="/assets/1.jpg"
                 alt="portfolio"
                 width={416}
                 height={312}
               />
+              <div className="overlay-work bg-dark"></div>
+              <div className="content">
+                <h5 className="mb-0">
+                  <a href="page-portfolio-detail.html" className="text-white">
+                    Iphone mockup
+                  </a>
+                </h5>
+                <h6 className="text-gray-100 mb-0">Branding</h6>
+              </div>
+              <div className="icons text-center">
+                <a
+                  href="javascript:void(0)"
+                  data-src="images/portfolio/1.jpg"
+                  data-gallery="myGal"
+                  className="text-primary work-icon bg-white d-inline-block rounded-full mfp-image"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="feather feather-camera fea icon-sm"
+                  >
+                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                    <circle cx="12" cy="13" r="4"></circle>
+                  </svg>
+                </a>
+              </div>
             </div>
-            <div className=" ">
+            <div className="relative portfolio-work overflow-hidden rounded-xl">
               <Image
-                className="rounded-xl full-shadow"
+                className="rounded-xl full-shadow portfolio-image"
                 src="/assets/2.jpg"
                 alt="portfolio"
                 width={416}
                 height={312}
               />
+              <div className="overlay-work bg-dark"></div>
+              <div className="content">
+                <h5 className="mb-0">
+                  <a href="page-portfolio-detail.html" className="text-white">
+                    Iphone mockup
+                  </a>
+                </h5>
+                <h6 className="text-gray-100 mb-0">Branding</h6>
+              </div>
+              <div className="icons text-center">
+                <a
+                  href="javascript:void(0)"
+                  data-src="images/portfolio/2.jpg"
+                  data-gallery="myGal"
+                  className="text-primary work-icon bg-white d-inline-block rounded-full mfp-image"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="feather feather-camera fea icon-sm"
+                  >
+                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                    <circle cx="12" cy="13" r="4"></circle>
+                  </svg>
+                </a>
+              </div>
             </div>
-            <div className=" ">
+            <div className="relative portfolio-work overflow-hidden rounded-xl">
               <Image
-                className="rounded-xl full-shadow"
+                className="rounded-xl full-shadow portfolio-image"
                 src="/assets/3.jpg"
                 alt="portfolio"
                 width={416}
                 height={312}
               />
+              <div className="overlay-work bg-dark"></div>
+              <div className="content">
+                <h5 className="mb-0">
+                  <a href="page-portfolio-detail.html" className="text-white">
+                    Iphone mockup
+                  </a>
+                </h5>
+                <h6 className="text-gray-100 mb-0">Branding</h6>
+              </div>
+              <div className="icons text-center">
+                <a
+                  href="javascript:void(0)"
+                  data-src="images/portfolio/3.jpg"
+                  data-gallery="myGal"
+                  className="text-primary work-icon bg-white d-inline-block rounded-full mfp-image"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="feather feather-camera fea icon-sm"
+                  >
+                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                    <circle cx="12" cy="13" r="4"></circle>
+                  </svg>
+                </a>
+              </div>
             </div>
-            <div className=" ">
+            <div className="relative portfolio-work overflow-hidden rounded-xl">
               <Image
-                className="rounded-xl full-shadow"
+                className="rounded-xl full-shadow portfolio-image"
                 src="/assets/1.jpg"
                 alt="portfolio"
                 width={416}
                 height={312}
               />
+              <div className="overlay-work bg-dark"></div>
+              <div className="content">
+                <h5 className="mb-0">
+                  <a href="page-portfolio-detail.html" className="text-white">
+                    Iphone mockup
+                  </a>
+                </h5>
+                <h6 className="text-gray-100 mb-0">Branding</h6>
+              </div>
+              <div className="icons text-center">
+                <a
+                  href="javascript:void(0)"
+                  data-src="images/portfolio/1.jpg"
+                  data-gallery="myGal"
+                  className="text-primary work-icon bg-white d-inline-block rounded-full mfp-image"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="feather feather-camera fea icon-sm"
+                  >
+                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                    <circle cx="12" cy="13" r="4"></circle>
+                  </svg>
+                </a>
+              </div>
             </div>
-            <div className=" ">
+            <div className="relative portfolio-work overflow-hidden rounded-xl">
               <Image
-                className="rounded-xl full-shadow"
+                className="rounded-xl full-shadow portfolio-image"
                 src="/assets/2.jpg"
                 alt="portfolio"
                 width={416}
                 height={312}
               />
+              <div className="overlay-work bg-dark"></div>
+              <div className="content">
+                <h5 className="mb-0">
+                  <a href="page-portfolio-detail.html" className="text-white">
+                    Iphone mockup
+                  </a>
+                </h5>
+                <h6 className="text-gray-100 mb-0">Branding</h6>
+              </div>
+              <div className="icons text-center">
+                <a
+                  href="javascript:void(0)"
+                  data-src="images/portfolio/2.jpg"
+                  data-gallery="myGal"
+                  className="text-primary work-icon bg-white d-inline-block rounded-full mfp-image"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="feather feather-camera fea icon-sm"
+                  >
+                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                    <circle cx="12" cy="13" r="4"></circle>
+                  </svg>
+                </a>
+              </div>
             </div>
-            <div className=" ">
+            <div className="relative portfolio-work overflow-hidden rounded-xl">
               <Image
-                className="rounded-xl full-shadow"
+                className="rounded-xl full-shadow portfolio-image"
                 src="/assets/3.jpg"
                 alt="portfolio"
                 width={416}
                 height={312}
               />
+              <div className="overlay-work bg-dark"></div>
+              <div className="content">
+                <h5 className="mb-0">
+                  <a href="page-portfolio-detail.html" className="text-white">
+                    Iphone mockup
+                  </a>
+                </h5>
+                <h6 className="text-gray-100 mb-0">Branding</h6>
+              </div>
+              <div className="icons text-center">
+                <a
+                  href="javascript:void(0)"
+                  data-src="images/portfolio/3.jpg"
+                  data-gallery="myGal"
+                  className="text-primary work-icon bg-white d-inline-block rounded-full mfp-image"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="feather feather-camera fea icon-sm"
+                  >
+                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                    <circle cx="12" cy="13" r="4"></circle>
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
         </div>

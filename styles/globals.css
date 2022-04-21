@@ -44,7 +44,6 @@ nav.scrolled {
   height: 48px;
   text-align: right;
   padding-right: 25px;
-  margin-top: 12px;
 }
 
 .mobileMenuList {
@@ -72,6 +71,25 @@ nav.scrolled {
   color: white;
 }
 
+.mobileMenuClose label span {
+  background: #fff !important;
+}
+.mobileMenuClose input[type="checkbox"] ~ span:nth-of-type(1) {
+  transform-origin: bottom;
+  transform: rotatez(45deg) translate(3px, 0px);
+}
+
+.mobileMenuClose input[type="checkbox"] ~ span:nth-of-type(2) {
+  transform-origin: top;
+  transform: rotatez(-45deg);
+}
+
+.mobileMenuClose input[type="checkbox"] ~ span:nth-of-type(3) {
+  transform-origin: bottom;
+  width: 50%;
+  transform: translate(10.5px, -5px) rotatez(45deg);
+}
+
 .mobileMenu a {
   padding-left: 20px;
   font-size: 16px;
@@ -90,7 +108,7 @@ nav.scrolled {
 
 .mobileMenu .active {
   top: 0;
-  z-index: 10;
+  /* z-index: 10; */
 }
 
 .mobileMenuList .contactSection {
@@ -134,4 +152,138 @@ nav.scrolled {
   font-size: 28px;
   color: white;
   text-decoration: none;
+}
+
+.mobileMenu label {
+  display: flex;
+  flex-direction: column;
+  width: 30px;
+  cursor: pointer;
+}
+
+.mobileMenu label span {
+  background: #4680fe;
+  border-radius: 10px;
+  height: 4px;
+  margin: 2px 0;
+  transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+
+.mobileMenu span:nth-of-type(1) {
+  width: 50%;
+}
+
+.mobileMenu span:nth-of-type(2) {
+  width: 100%;
+}
+
+.mobileMenu span:nth-of-type(3) {
+  width: 75%;
+}
+
+.mobileMenu input[type="checkbox"] {
+  display: none;
+}
+
+.overlay-work {
+  background-image: linear-gradient(#007bff 10%, #161c2d);
+  position: absolute;
+  transition: all 0.5s ease;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+}
+
+.content {
+  opacity: 0;
+  position: absolute;
+  transition: all 0.5s ease;
+  z-index: 1;
+  bottom: 5%;
+  left: 5%;
+}
+
+.portfolio-work .icons {
+  position: absolute;
+  transition: all 0.5s ease;
+  right: 0;
+  left: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  z-index: 2;
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.portfolio-work {
+  max-height: 310px;
+}
+
+.portfolio-work:hover .overlay-work {
+  opacity: 0.85;
+}
+
+.portfolio-work:hover .portfolio-image {
+  transform: scale(1.1);
+  transition: all .5s ease;
+}
+
+.portfolio-work:hover .content, .portfolio-work:hover .icons {
+  opacity: 1;
+}
+
+.portfolio-work .icons .work-icon {
+  height: 45px;
+  width: 45px;
+  line-height: 45px;
+  transition: all 0.5s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.back-to-top {
+  z-index: 99;
+  position: fixed;
+  bottom: 70px;
+  right: 30px;
+  background-color: rgba(0, 123, 255, 0.3) !important;
+  border: 1px solid rgba(0, 123, 255, 0.3) !important;
+  height: 36px;
+  width: 36px;
+  line-height: 34px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-to-top .icons {
+  transition: all 0.5s ease;
+  stroke-width: 2;
+  height: 14px;
+  width: 14px;
+}
+
+.back-to-top:hover {
+  background-color: #007bff !important;
+  color: white;
+  transition: all 0.5s;
+  bottom: 73px;
+}
+
+.active {
+  border-bottom: 2px solid #007bff;
+  color: #007bff;
+}
+
+.logo.active {
+  border: none;
+  color: initial;
 }
