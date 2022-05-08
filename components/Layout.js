@@ -34,7 +34,7 @@ export default function Layout({ children }) {
           duration={1000}
         >
           <a
-            href="javascript: void(0);"
+            // href="javascript: void(0);"
             className="back-to-top btn btn-icon btn-soft-primary block rounded-md"
             id="back-to-top"
             // onClick="topFunction()"

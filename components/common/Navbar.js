@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { FaFacebookF } from "react-icons/fa";
 import { BsLinkedin, BsInstagram, BsGithub } from "react-icons/bs";
-import { Link } from "react-scroll";
+// import { Link } from "react-scroll";
+import Link from "next/link";
 
 export default function Navbar() {
   const [atTopOfPage, setAtTopOfPage] = useState(true);
@@ -27,11 +28,8 @@ export default function Navbar() {
       >
         <div className="container flex justify-between">
           <Link
-            to="home"
-            spy={true}
-            smooth={true}
-            offset={-100}
-            duration={500}
+            href="/"
+            passHref
             className="cursor-pointer logo"
           >
             <h2 className="text-2xl font-semibold">
@@ -41,7 +39,7 @@ export default function Navbar() {
           <div className="flex space-x-6 items-center">
             <Link
               activeClass="active"
-              to="home"
+              href="/"
               spy={true}
               smooth={true}
               offset={-100}
@@ -52,7 +50,7 @@ export default function Navbar() {
             </Link>
             <Link
               activeClass="active"
-              to="services"
+              href="/services"
               spy={true}
               smooth={true}
               offset={0}
@@ -63,7 +61,7 @@ export default function Navbar() {
             </Link>
             <Link
               activeClass="active"
-              to="resume"
+              href="/resume"
               spy={true}
               smooth={true}
               offset={0}
@@ -74,7 +72,7 @@ export default function Navbar() {
             </Link>
             <Link
               activeClass="active"
-              to="projects"
+              href="/projects"
               spy={true}
               smooth={true}
               offset={-100}
@@ -85,7 +83,7 @@ export default function Navbar() {
             </Link>
             {/* <Link
               activeClass="active"
-              to="blog"
+              href="blog"
               spy={true}
               smooth={true}
               offset={-100}
@@ -96,7 +94,7 @@ export default function Navbar() {
             </Link> */}
             <Link
               activeClass="active"
-              to="contact"
+              href="/contact"
               spy={true}
               smooth={true}
               offset={-100}
@@ -149,7 +147,9 @@ export default function Navbar() {
         }`}
       >
         <Link
-          to="home"
+          activeClass="active"
+          href="/"
+          passHref
           spy={true}
           smooth={true}
           offset={-100}
@@ -185,23 +185,51 @@ export default function Navbar() {
           </div>
           <ul className="mobileMenuItems">
             <li>
-              <Link href="/">
+              <Link
+                activeClass="active"
+                href="/"
+                spy={true}
+                smooth={true}
+                offset={-100}
+                duration={500}
+              >
                 <a onClick={() => setMobileMenuOpen(false)}>Home</a>
               </Link>
             </li>
             <li>
-              <Link href="/ui-design">
-                <a onClick={() => setMobileMenuOpen(false)}>UI Design</a>
+              <Link
+                activeClass="active"
+                href="/services"
+                spy={true}
+                smooth={true}
+                offset={-100}
+                duration={500}
+              >
+                <a onClick={() => setMobileMenuOpen(false)}>Services</a>
               </Link>
             </li>
             <li>
-              <Link href="/blogs">
-                <a onClick={() => setMobileMenuOpen(false)}>Blogs</a>
+              <Link
+                activeClass="active"
+                href="/resume"
+                spy={true}
+                smooth={true}
+                offset={-100}
+                duration={500}
+              >
+                <a onClick={() => setMobileMenuOpen(false)}>Resume</a>
               </Link>
             </li>
             <li>
-              <Link href="/about">
-                <a onClick={() => setMobileMenuOpen(false)}>About Me</a>
+              <Link
+                activeClass="active"
+                href="/projects"
+                spy={true}
+                smooth={true}
+                offset={-100}
+                duration={500}
+              >
+                <a onClick={() => setMobileMenuOpen(false)}>Projects</a>
               </Link>
             </li>
           </ul>
@@ -210,7 +238,17 @@ export default function Navbar() {
               Lets work together for your{" "}
               <span className="d-block font-bold">business</span>
             </h4>
-            <a className="contactBtn">Contact me</a>
+            <Link
+              activeClass="active"
+              href="/contact"
+              spy={true}
+              smooth={true}
+              offset={-100}
+              duration={500}
+              className="contactBtn"
+            >
+              Contact me
+            </Link>
           </div>
         </div>
       </nav>

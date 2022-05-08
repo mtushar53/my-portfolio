@@ -427,7 +427,7 @@ export default function Home() {
               </div>
               <div className="icons text-center">
                 <a
-                  href="javascript:void(0)"
+                  // href="javascript:void(0)"
                   data-src="images/portfolio/1.jpg"
                   data-gallery="myGal"
                   className="text-primary work-icon bg-white d-inline-block rounded-full mfp-image"
@@ -469,7 +469,7 @@ export default function Home() {
               </div>
               <div className="icons text-center">
                 <a
-                  href="javascript:void(0)"
+                  // href="javascript:void(0)"
                   data-src="images/portfolio/2.jpg"
                   data-gallery="myGal"
                   className="text-primary work-icon bg-white d-inline-block rounded-full mfp-image"
@@ -511,7 +511,7 @@ export default function Home() {
               </div>
               <div className="icons text-center">
                 <a
-                  href="javascript:void(0)"
+                  // href="javascript:void(0)"
                   data-src="images/portfolio/3.jpg"
                   data-gallery="myGal"
                   className="text-primary work-icon bg-white d-inline-block rounded-full mfp-image"
@@ -553,7 +553,7 @@ export default function Home() {
               </div>
               <div className="icons text-center">
                 <a
-                  href="javascript:void(0)"
+                  // href="javascript:void(0)"
                   data-src="images/portfolio/1.jpg"
                   data-gallery="myGal"
                   className="text-primary work-icon bg-white d-inline-block rounded-full mfp-image"
@@ -595,7 +595,7 @@ export default function Home() {
               </div>
               <div className="icons text-center">
                 <a
-                  href="javascript:void(0)"
+                  // href="javascript:void(0)"
                   data-src="images/portfolio/2.jpg"
                   data-gallery="myGal"
                   className="text-primary work-icon bg-white d-inline-block rounded-full mfp-image"
@@ -637,7 +637,7 @@ export default function Home() {
               </div>
               <div className="icons text-center">
                 <a
-                  href="javascript:void(0)"
+                  // href="javascript:void(0)"
                   data-src="images/portfolio/3.jpg"
                   data-gallery="myGal"
                   className="text-primary work-icon bg-white d-inline-block rounded-full mfp-image"
@@ -771,4 +771,10 @@ export default function Home() {
       </div>
     </>
   );
+}
+
+export function getStaticProps() {
+  return {
+    props: {},
+  };
 }
